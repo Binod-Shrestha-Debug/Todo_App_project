@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block page_title %}My tasks{% endblock %}
+{% block content %}
+<div class="content-card">
+<form method="get" class="filter-bar"><input type="search" name="q" value="{{ query }}" placeholder="Search tasks..."><select name="status"><option value="">All statuses</option>{% for value,label in status_choices %}<option value="{{ value }}" {% if selected_status == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select><select name="priority"><option value="">All priorities</option>{% for value,label in priority_choices %}<option value="{{ value }}" {% if selected_priority == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select><button class="secondary-btn">Filter</button><a class="text-link" href="{% url 'task_list' %}">Reset</a></form>
+<div class="task-table">
+{% for task in tasks %}
+<div class="task-row"><form method="post" action="{% url 'task_toggle' task.pk %}">{% csrf_token %}<button class="task-check button-check" title="Toggle completed">{% if task.status == 'completed' %}✓{% else %}○{% endif %}</button></form><div class="task-main"><a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a><small>{% if task.category %}{{ task.category.name }} · {% endif %}{{ task.get_status_display }}{% if task.is_overdue %} · <span class="danger-text">Overdue</span>{% endif %}</small></div><span class="priority {{ task.priority }}">{{ task.get_priority_display }}</span><span class="task-date">{% if task.due_date %}{{ task.due_date|date:"d M Y" }}{% else %}No due date{% endif %}</span><a class="icon-link" href="{% url 'task_update' task.pk %}">Edit</a></div>
+{% empty %}<div class="empty-state"><h3>No tasks found</h3><p>Try changing your filters or create a task.</p><a class="primary-btn" href="{% url 'task_create' %}">＋ Create task</a></div>{% endfor %}
+</div></div>
+{% endblock %}

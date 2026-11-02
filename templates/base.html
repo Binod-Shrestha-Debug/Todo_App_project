@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}TaskFlow{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+{% if user.is_authenticated %}
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="{% url 'dashboard' %}"><span class="brand-mark">T</span> TaskFlow</a>
+    <div class="side-label">WORKSPACE</div>
+    <nav>
+      <a href="{% url 'dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">◫ &nbsp; Overview</a>
+      <a href="{% url 'task_list' %}">▤ &nbsp; My Tasks</a>
+      <a href="{% url 'calendar' %}">▦ &nbsp; Calendar</a>
+      <a href="{% url 'category_list' %}">◇ &nbsp; Categories</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="user-mini"><div class="avatar">{{ user.username|first|upper }}</div><div><strong>{{ user.username }}</strong><small>Personal workspace</small></div></div>
+      <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="logout-btn">↗ &nbsp; Sign out</button></form>
+    </div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar"><div><span class="eyebrow">YOUR WORKSPACE</span><h1>{% block page_title %}Overview{% endblock %}</h1></div><a class="primary-btn" href="{% url 'task_create' %}">＋ New task</a></header>
+    {% if messages %}<div class="messages">{% for message in messages %}<div class="message">{{ message }}</div>{% endfor %}</div>{% endif %}
+    {% block content %}{% endblock %}
+  </main>
+</div>
+{% else %}
+{% block auth_content %}{% endblock %}
+{% endif %}
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

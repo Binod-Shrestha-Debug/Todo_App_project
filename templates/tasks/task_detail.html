@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block page_title %}Task details{% endblock %}
+{% block content %}
+<div class="detail-grid"><section class="content-card"><div class="section-heading"><div><span class="priority {{ task.priority }}">{{ task.get_priority_display }} priority</span><h2 class="detail-title">{{ task.title }}</h2></div><a class="secondary-btn" href="{% url 'task_update' task.pk %}">Edit task</a></div>
+<p class="detail-description">{{ task.description|default:"No description provided."|linebreaks }}</p>
+<div class="detail-meta"><div><small>Status</small><strong>{{ task.get_status_display }}</strong></div><div><small>Category</small><strong>{{ task.category|default:"Uncategorized" }}</strong></div><div><small>Due date</small><strong>{{ task.due_date|date:"d M Y, H:i"|default:"Not set" }}</strong></div><div><small>Created</small><strong>{{ task.created_at|date:"d M Y" }}</strong></div></div>
+<h3>Comments</h3>{% for comment in task.comments.all %}<div class="comment"><strong>{{ comment.user.username }}</strong><small>{{ comment.created_at|date:"d M Y H:i" }}</small><p>{{ comment.body|linebreaksbr }}</p></div>{% empty %}<p class="muted">No comments yet.</p>{% endfor %}
+<form method="post" class="form-stack comment-form">{% csrf_token %}{{ comment_form.body }}<button class="primary-btn">Add comment</button></form>
+</section><aside class="content-card"><h3>Task activity</h3>{% for activity in task.activities.all %}<div class="activity-item"><span class="activity-dot"></span><div><p>{{ activity.message }}</p><small>{{ activity.created_at|date:"d M Y, H:i" }}</small></div></div>{% empty %}<p class="muted">No activity yet.</p>{% endfor %}<hr><a class="danger-link" href="{% url 'task_delete' task.pk %}">Delete this task</a></aside></div>
+{% endblock %}

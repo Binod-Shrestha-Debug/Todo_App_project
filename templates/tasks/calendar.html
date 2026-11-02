@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block page_title %}Task calendar{% endblock %}
+{% block content %}
+<div class="content-card"><div class="section-heading"><div><h2>Upcoming deadlines</h2><p class="muted">Tasks that have a due date</p></div></div>
+<div class="task-table">{% for task in tasks %}<div class="task-row"><div class="calendar-date"><strong>{{ task.due_date|date:"d" }}</strong><small>{{ task.due_date|date:"M" }}</small></div><div class="task-main"><a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a><small>{{ task.due_date|date:"l, d F Y · H:i" }}</small></div><span class="priority {{ task.priority }}">{{ task.get_priority_display }}</span></div>{% empty %}<div class="empty-state"><h3>No deadlines scheduled</h3><p>Add a due date to a task to see it here.</p></div>{% endfor %}</div></div>
+{% endblock %}

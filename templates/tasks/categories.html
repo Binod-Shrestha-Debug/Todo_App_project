@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block page_title %}Categories{% endblock %}
+{% block content %}
+<div class="two-column"><section class="content-card"><h2>Your categories</h2>{% for category in categories %}<div class="category-row"><span class="category-dot" style="background:{{ category.color }}"></span><strong>{{ category.name }}</strong><small>{{ category.tasks.count }} tasks</small></div>{% empty %}<p class="muted">No categories yet. Add one to organize your tasks.</p>{% endfor %}</section>
+<section class="content-card"><h2>Create category</h2><form method="post" class="form-stack">{% csrf_token %}{{ form.as_p }}<button class="primary-btn">Add category</button></form></section></div>
+{% endblock %}

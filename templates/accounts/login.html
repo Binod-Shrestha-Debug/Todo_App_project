@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Sign in · TaskFlow{% endblock %}
+{% block auth_content %}
+<div class="auth-page"><div class="auth-card"><a class="brand centered" href="#"> <span class="brand-mark">T</span> TaskFlow</a><h1>Welcome back</h1><p class="muted">Sign in to continue managing your work.</p>
+<form method="post" class="form-stack">{% csrf_token %}{{ form.as_p }}<button class="primary-btn full">Sign in</button></form>
+<p class="auth-foot">New to TaskFlow? <a href="{% url 'register' %}">Create an account</a></p></div></div>
+{% endblock %}
