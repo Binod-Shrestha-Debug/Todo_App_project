@@ -181,4 +181,3 @@ While developing this project, I practiced:
 
 **Developer: Binod Shrestha**
 
-*Built with Python, Django and a passion for learning.*
