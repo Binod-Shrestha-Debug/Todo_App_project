@@ -2,11 +2,13 @@
 
 **Developed by: Binod Shrestha**
 
-TaskFlow is a web-based task management application developed using Python, Django, Django REST Framework, HTML, CSS and JavaScript.
+**GitHub Repository:** [Todo_App_project](https://github.com/Binod-Shrestha-Debug/Todo_App_project)
 
-The main purpose of this project is to help users organize their daily work, manage tasks, track deadlines and monitor their productivity from one place.
+TaskFlow is a web-based task management application developed using Python, Django, Django REST Framework, HTML, CSS, and JavaScript.
 
-I built this project to practice Django web development, database management, REST API development and frontend design in a practical way.
+The main purpose of this project is to help users organize their daily work, manage tasks, track deadlines, and monitor their productivity from one place.
+
+I built this project to practice Django web development, database management, REST API development, and frontend design in a practical way.
 
 ## Features
 
@@ -17,10 +19,10 @@ I built this project to practice Django web development, database management, RE
 - Each user can access only their own tasks.
 
 ### Task Management
-- Create, view, edit and delete tasks.
+- Create, view, edit, and delete tasks.
 - Add task descriptions and due dates.
-- Set task priorities: Low, Medium, High and Urgent.
-- Track task progress using Pending, In Progress and Completed statuses.
+- Set task priorities: Low, Medium, High, and Urgent.
+- Track progress using Pending, In Progress, and Completed statuses.
 - Identify overdue tasks.
 
 ### Task Organization
@@ -43,7 +45,7 @@ I built this project to practice Django web development, database management, RE
 - Update and delete existing tasks.
 - Manage categories.
 - Use JWT authentication.
-- Apply API permissions, filtering and pagination.
+- Apply API permissions, filtering, and pagination.
 
 ## Technologies Used
 
@@ -66,13 +68,13 @@ Follow these steps to run the project on your computer.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/advanced-todo-management-system.git
+git clone https://github.com/Binod-Shrestha-Debug/Todo_App_project.git
 ```
 
 ### 2. Open the Project
 
 ```bash
-cd advanced-todo-management-system
+cd Todo_App_project
 ```
 
 ### 3. Create a Virtual Environment
@@ -142,7 +144,7 @@ python manage.py test
 ## Project Structure
 
 ```text
-advanced_todo_management/
+Todo_App_project/
 │
 ├── accounts/
 ├── config/
@@ -181,3 +183,6 @@ While developing this project, I practiced:
 
 **Developer: Binod Shrestha**
 
+**GitHub:** [https://github.com/Binod-Shrestha-Debug](https://github.com/Binod-Shrestha-Debug)
+
+**Project Repository:** [Todo_App_project](https://github.com/Binod-Shrestha-Debug/Todo_App_project)
